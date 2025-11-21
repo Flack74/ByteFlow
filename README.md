@@ -30,8 +30,8 @@
 
 ```
 ByteFlow/
-├── 📂 SocialFeedApp/
-│   ├── 📂 SocialFeedApp/          # 🔧 Project settings
+├── 📂 ByteFlow/
+│   ├── 📂 ByteFlow/               # 🔧 Project settings
 │   │   ├── settings.py
 │   │   ├── urls.py
 │   │   ├── wsgi.py
