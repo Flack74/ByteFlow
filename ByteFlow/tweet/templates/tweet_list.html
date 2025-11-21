@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}Tweets - ByteFlow{% endblock %}
+
+{% block content %}
+<div class="mb-5" style="animation: fadeInUp 0.6s ease-out;">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            <i class="bi bi-chat-dots"></i> Tweet Feed
+        </h1>
+        <a class="btn btn-primary" href="{% url 'tweet_create' %}">
+            <i class="bi bi-plus-circle"></i> New Tweet
+        </a>
+    </div>
+
+    {% if tweets %}
+        <div class="row g-4">
+            {% for tweet in tweets %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3" style="animation: cardFadeIn 0.5s ease-out; animation-delay: {{ forloop.counter0 }}00ms;
+ animation-fill-mode: both;">
+                    <div class="card shadow-sm h-100">
+                        {% if tweet.photo %}
+                            <div style="overflow: hidden; height: 200px;">
+                                <img src="{{ tweet.photo.url }}" class="card-img-top" alt="Tweet image" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease;">
+                            </div>
+                        {% else %}
+                            <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2)); height: 120px; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-image" style="font-size: 3rem; color: rgba(99, 102, 241, 0.3);"></i>
+                            </div>
+                        {% endif %}
+
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-2">
+                                <span class="badge text-bg-primary">
+                                    <i class="bi bi-person-circle"></i> @{{ tweet.user.username }}
+                                </span>
+                            </div>
+
+                            <p class="card-text text-muted flex-grow-1" style="min-height: 60px; word-break: break-word;">
+                                {{ tweet.text|truncatewords:30 }}
+                            </p>
+
+                            {% if tweet.user == user %}
+                            <div class="mt-3 d-flex gap-2">
+                                <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-sm btn-outline-primary flex-grow-1" title="Edit tweet">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </a>
+                                <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-sm btn-outline-danger flex-grow-1" title="Delete tweet">
+                                    <i class="bi bi-trash"></i> Delete
+                                </a>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center py-5">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">
+                <i class="bi bi-chat-dots text-muted" style="opacity: 0.5;"></i>
+            </div>
+            <h3 class="text-muted mb-3">No tweets yet</h3>
+            <p class="text-muted mb-4">Be the first to share your thoughts!</p>
+            <a class="btn btn-primary" href="{% url 'tweet_create' %}">
+                <i class="bi bi-plus-circle"></i> Create Tweet
+            </a>
+        </div>
+    {% endif %}
+</div>
+
+<style>
+    @media (max-width: 768px) {
+        .col-12 {
+            animation-delay: 0s !important;
+        }
+    }
+</style>
+{% endblock %}

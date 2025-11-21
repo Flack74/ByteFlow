@@ -1,0 +1,170 @@
+{% extends "layout.html" %}
+
+{% block title %}Login - ByteFlow{% endblock %}
+
+{% block content %}
+<div class="min-vh-100 d-flex align-items-center" style="animation: fadeInUp 0.6s ease-out;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                <!-- Header -->
+                <div class="text-center mb-5">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">
+                        <i class="bi bi-twitter-x" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"></i>
+                    </div>
+                    <h1 class="fw-bold mb-2" style="background: linear-gradient(135deg, #6366f1, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                        Welcome Back
+                    </h1>
+                    <p class="text-muted fs-5">Sign in to your ByteFlow account</p>
+                </div>
+
+                <!-- Login Card -->
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-5">
+                        <form method="POST" novalidate id="loginForm">
+                            {% csrf_token %}
+
+                            <!-- Form Fields -->
+                            {% for field in form %}
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold mb-2">
+                                        {% if 'username' in field.name %}
+                                            <i class="bi bi-person"></i> {{ field.label }}
+                                        {% elif 'password' in field.name %}
+                                            <i class="bi bi-lock"></i> {{ field.label }}
+                                        {% else %}
+                                            {{ field.label }}
+                                        {% endif %}
+                                    </label>
+
+                                    {{ field }}
+
+                                    <!-- Field Errors -->
+                                    {% if field.errors %}
+                                        <div class="alert alert-danger mt-2 mb-0 small">
+                                            <i class="bi bi-exclamation-circle"></i>
+                                            {% for error in field.errors %}
+                                                <div>{{ error }}</div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+
+                            <!-- Submit Button -->
+                            <button class="btn btn-primary btn-lg w-100 mt-3 fw-bold" type="submit">
+                                <i class="bi bi-box-arrow-in-right"></i> Sign In
+                            </button>
+                        </form>
+
+                        <!-- Divider -->
+                        <div class="my-4 position-relative">
+                            <div style="height: 1px; background: var(--border-color);"></div>
+                            <span class="position-absolute top-50 start-50 translate-middle bg-body-secondary px-3" style="font-size: 0.85rem; color: #64748b;">
+                                OR
+                            </span>
+                        </div>
+
+                        <!-- Additional Options -->
+                        <div class="text-center">
+                            <p class="text-muted mb-2 small">
+                                <i class="bi bi-info-circle"></i> Forgot your password?
+                            </p>
+                            <a href="#" class="btn btn-outline-light btn-sm w-100">
+                                <i class="bi bi-arrow-counterclockwise"></i> Reset Password
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration Link -->
+                <div class="text-center mt-4">
+                    <p class="text-muted mb-0">
+                        Don't have an account?
+                        <a href="{% url 'register' %}" class="text-primary fw-bold text-decoration-none">
+                            Register now
+                        </a>
+                    </p>
+                </div>
+
+                <!-- Security Note -->
+                <div class="alert alert-info mt-5 border-start border-primary" role="alert">
+                    <i class="bi bi-shield-lock"></i>
+                    <strong>Secure Login:</strong> Your credentials are encrypted and secure
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #loginForm .form-control {
+        background: rgba(51, 65, 85, 0.5);
+        border: 2px solid var(--border-color);
+        color: #e2e8f0;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+    }
+
+    #loginForm .form-control:focus {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    #loginForm .form-control::placeholder {
+        color: #64748b;
+    }
+
+    .btn-primary {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-outline-light:hover {
+        background: rgba(99, 102, 241, 0.2);
+        border-color: #6366f1;
+    }
+
+    .card {
+        animation: slideInUp 0.5s ease-out;
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.6));
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    a {
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: #8b5cf6 !important;
+    }
+
+    @media (max-width: 768px) {
+        .card-body {
+            padding: 2rem !important;
+        }
+
+        #loginForm .form-control {
+            font-size: 16px;
+        }
+    }
+</style>
+{% endblock %}

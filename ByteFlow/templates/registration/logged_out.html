@@ -1,0 +1,145 @@
+{% extends "layout.html" %}
+
+{% block title %}Logged Out - ByteFlow{% endblock %}
+
+{% block content %}
+<div class="min-vh-100 d-flex align-items-center" style="animation: fadeInUp 0.6s ease-out;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                <!-- Logged Out Card -->
+                <div class="card shadow-lg border-0 text-center">
+                    <div class="card-body p-5">
+                        <!-- Success Icon -->
+                        <div class="mb-4" style="font-size: 4rem; color: #10b981; animation: bounceIn 0.6s ease-out;">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+
+                        <!-- Message -->
+                        <h2 class="fw-bold mb-2">You're All Set!</h2>
+                        <p class="text-muted fs-5 mb-5">
+                            You have successfully logged out of your ByteFlow account. See you next time!
+                        </p>
+
+                        <!-- Action Buttons -->
+                        <div class="d-grid gap-3">
+                            <a href="{% url 'login' %}" class="btn btn-primary btn-lg fw-bold">
+                                <i class="bi bi-box-arrow-in-right"></i> Sign In Again
+                            </a>
+                            <a href="/" class="btn btn-outline-light btn-lg">
+                                <i class="bi bi-house-door"></i> Go to Home
+                            </a>
+                        </div>
+
+                        <!-- Additional Info -->
+                        <div class="mt-5 pt-4 border-top border-secondary">
+                            <p class="text-muted small mb-3">
+                                <i class="bi bi-info-circle"></i> Your account is secure
+                            </p>
+                            <p class="text-muted small mb-0">
+                                Don't have an account yet?
+                                <a href="{% url 'register' %}" class="text-primary fw-bold">Create one now</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="row g-3 mt-5">
+                    <div class="col-6">
+                        <div class="text-center p-3 rounded" style="background: rgba(99, 102, 241, 0.1); border: 1px solid var(--border-color);">
+                            <div style="font-size: 2rem; color: #6366f1; margin-bottom: 0.5rem;">
+                                <i class="bi bi-chat-dots"></i>
+                            </div>
+                            <small class="text-muted d-block">Tweet Community</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="text-center p-3 rounded" style="background: rgba(99, 102, 241, 0.1); border: 1px solid var(--border-color);">
+                            <div style="font-size: 2rem; color: #6366f1; margin-bottom: 0.5rem;">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <small class="text-muted d-block">Active Users</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes bounceIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.3);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .card {
+        animation: slideInUp 0.5s ease-out;
+        background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.6));
+    }
+
+    .btn-primary {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-outline-light {
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-light:hover {
+        background: rgba(99, 102, 241, 0.2);
+        border-color: #6366f1;
+        transform: translateY(-2px);
+    }
+
+    a {
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: #8b5cf6 !important;
+    }
+
+    .border-secondary {
+        border-color: var(--border-color) !important;
+    }
+
+    @media (max-width: 768px) {
+        .card-body {
+            padding: 2rem !important;
+        }
+
+        .btn {
+            font-size: 0.95rem;
+        }
+    }
+</style>
+{% endblock %}
