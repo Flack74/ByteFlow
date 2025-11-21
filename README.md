@@ -195,9 +195,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- 🐛 **Issues**: [GitHub Issues](https://github.com/yourusername/ByteFlow/issues)
-- 📧 **Email**: your.email@example.com
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/yourusername/ByteFlow/discussions)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/Flack74/ByteFlow/issues)
+- 📧 **Email**: puspendrachawlax@example.com
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/Flack74/ByteFlow/discussions)
 
 ## 🙏 Acknowledgments
 
@@ -208,6 +208,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <div align="center">
-  <p>Made with ❤️ by <a href="https://github.com/yourusername">Your Name</a></p>
+  <p>Made with ❤️ by <a href="https://github.com/Flack74">Flack74</a></p>
   <p>⭐ Star this repo if you found it helpful!</p>
 </div>
