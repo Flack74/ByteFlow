@@ -61,7 +61,7 @@ ByteFlow/
 
 ### 1️⃣ Clone Repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/Flack74/ByteFlow
 cd ByteFlow
 ```
 
