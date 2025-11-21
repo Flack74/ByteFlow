@@ -79,7 +79,7 @@ pip install -r requirements.txt
 
 ### 4️⃣ Navigate to Project
 ```bash
-cd SocialFeedApp
+cd ByteFlow
 ```
 
 ### 5️⃣ Database Setup
